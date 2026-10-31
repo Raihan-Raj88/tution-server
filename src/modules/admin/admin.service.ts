@@ -65,16 +65,22 @@ const deleteUserFromDB = async (id: string) => {
 };
 
 const deleteTeacherFromDB = async (id: string) => {
-  const teacher = await Teacher.findByIdAndDelete(id);
+  const teacher = await Teacher.findById(id);
   if (!teacher) throw new AppError(httpStatus.NOT_FOUND, 'Teacher not found');
+
+  await Teacher.findByIdAndDelete(id);
   await User.findByIdAndDelete(teacher.userId);
+
   return teacher;
 };
 
 const deleteStudentFromDB = async (id: string) => {
-  const student = await Student.findByIdAndDelete(id);
+  const student = await Student.findById(id);
   if (!student) throw new AppError(httpStatus.NOT_FOUND, 'Student not found');
+
+  await Student.findByIdAndDelete(id);
   await User.findByIdAndDelete(student.userId);
+
   return student;
 };
 
