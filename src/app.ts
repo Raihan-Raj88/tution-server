@@ -13,7 +13,7 @@ const app: Express = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://tuition-clint.vercel.app'],
+    origin: ['http://localhost:5173', 'https://tution-client-fogn.vercel.app'],
     credentials: true,
   }),
 );
